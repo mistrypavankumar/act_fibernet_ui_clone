@@ -8,10 +8,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
+    return Container(
       child: Scaffold(
         appBar: AppBar(
+          title: Text("Hi John"),
           actions: [
             IconButton(
               icon: Icon(Icons.notifications),
@@ -20,16 +20,69 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         drawer: Drawer(
-          child: Column(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: [
-              CircleAvatar(
-                child: Icon(Icons.people_alt_outlined),
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      bottom: 10,
+                      left: 5,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Icon(
+                              Icons.perm_identity,
+                              color: Colors.white,
+                              size: 35.0,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "John",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text("UserName"),
+              buildListTile("My Account", Icons.people, () {}),
+              buildListTile("My Account", Icons.people, () {}),
+              buildListTile("My Account", Icons.people, () {}),
+              buildListTile("My Account", Icons.people, () {}),
+              buildListTile("My Account", Icons.people, () {}),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  ListTile buildListTile(String title, icon, Function onTap) {
+    return ListTile(
+      title: Text(title),
+      leading: Icon(icon),
+      onTap: onTap,
     );
   }
 }

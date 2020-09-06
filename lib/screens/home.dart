@@ -6,6 +6,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isClicked = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,11 +68,105 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               buildListTile("My Account", Icons.people, () {}),
-              buildListTile("My Account", Icons.people, () {}),
-              buildListTile("My Account", Icons.people, () {}),
-              buildListTile("My Account", Icons.people, () {}),
-              buildListTile("My Account", Icons.people, () {}),
+              buildListTile("My Wi-Fi Settings", Icons.wifi, () {}),
+              buildListTile("Upgrade my plan", Icons.upgrade, () {}),
+              buildListTile("Shop", Icons.shopping_basket, () {}),
+              buildListTile("Offers", Icons.local_offer, () {}),
+              buildListTile(
+                  "Notifications", Icons.notification_important, () {}),
+              buildListTile("FAQ's", Icons.perm_identity, () {}),
+              buildListTile("About us", Icons.people_alt, () {}),
+              buildListTile("Rate This App", Icons.star, () {}),
+              buildListTile("Logout", Icons.logout, () {}),
+              buildListTile("App version: 0.0.1", Icons.new_releases, () {}),
             ],
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child: Container(
+            height: 70.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.home_outlined,
+                        size: 30.0,
+                        color: Colors.red,
+                      ),
+                      onPressed: () {},
+                    ),
+                    Text(
+                      "Home",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.support_agent,
+                        size: 30.0,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {},
+                    ),
+                    Text(
+                      "Support",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.east_rounded,
+                        size: 30.0,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {},
+                    ),
+                    Text(
+                      "Refer & Earn",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.list,
+                        size: 30.0,
+                        color: isClicked ? Colors.red : Colors.grey[600],
+                      ),
+                      onPressed: () {},
+                    ),
+                    Text(
+                      "Bill details",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -81,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ListTile buildListTile(String title, icon, Function onTap) {
     return ListTile(
       title: Text(title),
-      leading: Icon(icon),
+      leading: Icon(icon, color: Colors.yellowAccent[700]),
       onTap: onTap,
     );
   }
